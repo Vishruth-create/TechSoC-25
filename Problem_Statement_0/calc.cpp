@@ -56,11 +56,10 @@ double deal_with_vectors(vector<double> nums,vector<char> ops)
 
     for (int i = 1; i < size; i++)
     {
-        result = perform_op(nums[nums.size()-2], ops[ops.size()-1], nums[nums.size()-1]); //ONe by one passing values to perform_op function and also removing those values then
-        nums.pop_back();
-        nums.pop_back();
-        nums.push_back(result); // Adding result as the last value for further calculations on it
-        ops.pop_back(); // Removing the operator we are already done with
+        result = perform_op(nums[0], ops[0], nums[1]); //ONe by one passing values to perform_op function and also removing those values then
+        nums.erase(nums.begin() + 1);
+        nums[0]=result; // Adding result as the last value for further calculations on it
+        ops.erase(ops.begin()+0); // Removing the operator we are already done with
     }
     return result;
 }
