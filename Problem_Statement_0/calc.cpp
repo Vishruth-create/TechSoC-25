@@ -2,6 +2,10 @@
 #include <vector>
 using namespace std;
 
+string str;
+bool simple = true; //Whether the operation being performed is simple like +-*/ or complex like sqrt, sin etc.
+double input=0;
+
 double perform_op(double lhv, char ch, double rhv) //As the name of the function suggests, it takes a left hand value
                                                    // a character and a right hand value and returns the calculated answer
 {
@@ -36,17 +40,53 @@ double perform_op(double lhv, char ch, double rhv) //As the name of the function
     return 0;
 }
 
+double advanced_ops()
+{
+    if (str == "sqrt")
+    {
+        long double left = 0, right = input, ans = 0;
+        while (left <= right)
+        {
+            long double mid = left + (right - left) / 2;  //Used binary search for square root
+            if (mid * mid <= input)
+            {
+                ans = mid;
+                left = mid + 0.0001;
+            }
+            else
+            {
+                right = mid - 0.0001;
+            }
+        }
+        ans *= 100;              //Rounding off to 2 decimal places because JEE mai utna hi required hota hai
+        double floor = int(ans);
+        if ((ans - floor) >= 0.5)
+            floor += 1;
+        else
+            floor -= 1;
+        return floor/100;
+    }
+    return 0;
+}
+
 void take_input(vector<double> &nums, vector<char> &ops)
 {
-    double num;
     char op;
-    while(cin >> num >> op)
-        {
-            nums.push_back(num); //pushing back numbers to nums
-            if(op=='=') break; // If an = is detected then stop taking input
-            ops.push_back(op); //Adding operators to op (= will not be added)
-        }
-
+    double num;
+    while (cin >> num >> op)
+    {
+        simple = true;
+        nums.push_back(num); // pushing back numbers to nums
+        if (op == '=')
+            break;         // If an = is detected then stop taking input
+        ops.push_back(op); // Adding operators to op (= will not be added)
+    }
+    if (!cin) //Different method for inputs like sqrt, sin etc.
+    {
+        simple = false;
+        cin.clear();        //operation in being stored in str and numerical value in input
+        cin >> str >> input;
+    }
 }
 
 double deal_with_vectors(vector<double> nums,vector<char> ops)
@@ -73,9 +113,18 @@ int main()
 
         cout << ">"; // printing my prompt
         take_input(nums, ops);
-        double result = deal_with_vectors(nums, ops);
+        if (simple == true) //If operation simple hai
+        {
+            double result = deal_with_vectors(nums, ops);
+            cout << result << endl;
+        }
+        else 
+        {
+            double result = advanced_ops();
+            cout << result << endl;
+        }
 
-        cout << result << endl; // Adding equals to at the end is necessary
+        // Adding equals to at the end is necessary
         //Operation are performed from right to left
 
     }
