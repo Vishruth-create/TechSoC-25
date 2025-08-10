@@ -58,13 +58,13 @@ double advanced_ops()
                 right = mid - 0.0001;
             }
         }
-        ans *= 100;              //Rounding off to 2 decimal places because JEE mai utna hi required hota hai
+        ans *= 1000;              //Rounding off to 2 decimal places because JEE mai utna hi required hota hai
         double floor = int(ans);
         if ((ans - floor) >= 0.5)
             floor += 1;
         else
             floor -= 1;
-        return floor/100;
+        return floor/1000;
     }
     return 0;
 }
@@ -124,8 +124,8 @@ int main()
             cout << result << endl;
         }
 
-        // Adding equals to at the end is necessary
-        //Operation are performed from right to left
+        // Adding equals to '=' at the end is necessary
+        //Operation are performed from left to right
 
     }
 
