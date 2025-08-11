@@ -40,4 +40,4 @@ log10<br>
 
 <h1 style="color:red;">HOW TO USE THIS CALCULATOR?</h1>
 
-After the prompt '>' is printed, for basic operation like +-/*^ you can write it like "1+2/3-4^5=". Can input as many spaces as you want and as many operations in one prompt as yu want. Operations witll be performed from left to right No bodmass. For functions like square root input 'sqrt 25' or 'ln 3' or 'log10', no equals to required but at least one space between sqrt and number in required. See **testing.jpeg** file for test screenshots.
+After the prompt '>' is printed, for basic operation like +-/*^ you can write it like "1+2/3-4^5=". Can input as many spaces as you want and as many operations in one prompt as you want. Operations will be performed from left to right No bodmas. For functions like square root input 'sqrt 25' or 'ln 3' or 'log10', no equals to required but at least one space between sqrt and number in required. See **testing.jpeg** file for test screenshots.
