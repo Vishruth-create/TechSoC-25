@@ -4,10 +4,21 @@ using namespace std;
 
 void resolving_shift(int &shift, int operation)
 {
+    if (shift>=0){
     while (shift>26) // Incase someone inputs something like 100 it will bring it down to 22
     {
         shift = shift - 26;
     }
+}
+else 
+{
+    while (shift<-26) // Incase someone inputs something like 100 it will bring it down to 22
+    {
+        shift = shift + 26;
+    }
+
+}
+
     switch (operation) //Decoding is encoding with negative shift
     {
     case 1:
